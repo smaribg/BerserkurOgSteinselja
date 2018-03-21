@@ -27,7 +27,17 @@ public class Arrow : MonoBehaviour {
 			other.GetComponent<Enemy>().killable = true;
 			other.GetComponent<Renderer>().material.SetColor("_Color",Color.yellow);
 			other.GetComponent<Rigidbody>().AddForce(new Vector3(transform.up.x * 100 ,100,transform.up.z * 100), ForceMode.Impulse);
-		}else if(other.tag != "Player2"){
+		}
+		else if(other.tag == "Boss"){
+			if(other.GetComponent<Boss>().health > 0){
+				other.GetComponent<Boss>().health -= 1;
+				other.GetComponent<Renderer>().material.SetColor("_Color",(Color.Lerp(Color.red, Color.yellow, other.GetComponent<Boss>().health/other.GetComponent<Boss>().maxHealth)));
+				other.GetComponent<Rigidbody>().AddForce(new Vector3(transform.up.x * 5 ,5,transform.up.z * 5), ForceMode.Impulse);
+			}else{
+				Destroy(other.gameObject);
+			}
+		}
+		else if(other.tag != "Player2"){
 			Destroy(gameObject);
 		}
 	}

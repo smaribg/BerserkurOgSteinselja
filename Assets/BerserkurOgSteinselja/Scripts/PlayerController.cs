@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour {
 		GetInput();
 		ProcessInput();
 		checkIfDead();
-		// if(playerId == 1)
-//			HealthPoints.text = "Health points:" + hp;
+		if(playerId == 0){
+			HealthPoints.text = "Berserkur: " + hp;
+		}else{
+			HealthPoints.text = "Steinselja: " + hp;
+		}
 	}
 	void checkIfDead(){
 		if(hp == 0){
@@ -40,23 +43,22 @@ public class PlayerController : MonoBehaviour {
 		moveVector.x = player.GetAxis("Move Horizontal");
 		moveVector.z = player.GetAxis("Move Vertical");
 
-		if(playerId == 1){
-			_aimVector.x = player.GetAxis("Aim Horizontal");
-			_aimVector.z = player.GetAxis("Aim Vertical");
-		}
+	
+		_aimVector.x = player.GetAxis("Aim Horizontal");
+		_aimVector.z = player.GetAxis("Aim Vertical");
+		
 	}
 
 	private void ProcessInput() {
-		if(moveVector.x != 0.0f || moveVector.z != 0.0f){
-			transform.position = (transform.position + moveVector * movementSpeed * Time.deltaTime);
-			if(playerId == 0)
-				transform.rotation = Quaternion.LookRotation(moveVector);
-		}
+        if (moveVector.x != 0.0f || moveVector.z != 0.0f)
+        {
+            transform.position = (transform.position + moveVector * movementSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(moveVector);
 
-		if(playerId == 1){
-			if(_aimVector.x != 0.0f || _aimVector.z != 0.0f){
-				transform.rotation = Quaternion.LookRotation(_aimVector);
-			}
+        }
+		if(_aimVector.x != 0.0f || _aimVector.z != 0.0f){
+			transform.rotation = Quaternion.LookRotation(_aimVector);
 		}
+		
 	}
 }

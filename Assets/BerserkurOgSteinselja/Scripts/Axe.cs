@@ -65,10 +65,12 @@ public class Axe : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if(other.tag == "Enemy"){
-			other.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200 ,100,transform.forward.z * 200), ForceMode.Impulse);
-			if(other.GetComponent<Enemy>().killable)
-				other.GetComponent<Collider>().enabled = false;
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200, 100, transform.forward.z * 200), ForceMode.Impulse);
+            if (other.GetComponent<Enemy>().killable) { 
+                Destroy(other.gameObject);
+        }
 		}
 	}
 }
