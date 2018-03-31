@@ -64,11 +64,11 @@ public class Axe : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other){
-        if (other.tag == "Enemy")
+	void OnCollisionEnter(Collision other){
+        if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200, 100, transform.forward.z * 200), ForceMode.Impulse);
-            if (other.GetComponent<Enemy>().killable) { 
+            other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200, 100, transform.forward.z * 200), ForceMode.Impulse);
+            if (other.gameObject.GetComponent<Enemy>().killable) { 
                 Destroy(other.gameObject);
         }
 		}

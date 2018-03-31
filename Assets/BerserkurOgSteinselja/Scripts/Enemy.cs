@@ -20,20 +20,22 @@ public class Enemy : MonoBehaviour
 
 	void Update()
 	{
-		target = targets[0];
-		foreach(Transform t in targets){
-			if(Vector3.Distance(transform.position, t.position) < Vector3.Distance(transform.position, target.position)){
-				target = t;
+		if(targets.Length > 0){
+			target = targets[0];
+			foreach(Transform t in targets){
+				if(Vector3.Distance(transform.position, t.position) < Vector3.Distance(transform.position, target.position)){
+					target = t;
+				}
 			}
-		}
-		transform.LookAt(target);
-		distanceFromTarget = Vector3.Distance(transform.position, target.position);
-		//transform.LookAt(steinselja);
+			transform.LookAt(target);
+			distanceFromTarget = Vector3.Distance(transform.position, target.position);
+			//transform.LookAt(steinselja);
 
-		if (distanceFromTarget <= MaxDist &&
-            distanceFromTarget >= MinDist)
-		{
-			transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+			if (distanceFromTarget <= MaxDist &&
+				distanceFromTarget >= MinDist)
+			{
+				transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+			}
 		}
 	}
 
