@@ -60,7 +60,7 @@ public class Boss : MonoBehaviour
         if (other.collider.tag == "Player" || other.collider.tag == "Player2")
         {
             other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200, 100, transform.forward.z * 200), ForceMode.Impulse);
-            other.gameObject.GetComponent<PlayerController>().hp -= 1;
+            other.gameObject.GetComponent<PlayerController>().TakeDamage();
         }
     }
 }

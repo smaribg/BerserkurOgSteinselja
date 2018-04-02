@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 using UnityEngine.UI;
@@ -17,7 +18,12 @@ public class Enemy : MonoBehaviour
 	public bool killable = false;
 	[HideInInspector]
     public float distanceFromTarget;
+	NavMeshAgent agent;
 
+	void Start()
+	{
+		agent = GetComponent<NavMeshAgent>();
+	}
 	void Update()
 	{
 		if(targets.Length > 0){
@@ -34,7 +40,8 @@ public class Enemy : MonoBehaviour
 			if (distanceFromTarget <= MaxDist &&
 				distanceFromTarget >= MinDist)
 			{
-				transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+				agent.SetDestination(target.position);
+				// transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 			}
 		}
 	}
@@ -42,7 +49,7 @@ public class Enemy : MonoBehaviour
 	void OnCollisionEnter(Collision other){
 		if(other.collider.tag == "Player" || other.collider.tag == "Player2"){
 			other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(transform.forward.x * 200 ,100,transform.forward.z * 200), ForceMode.Impulse);
-			other.gameObject.GetComponent<PlayerController>().hp -=1 ;
+			other.gameObject.GetComponent<PlayerController>().TakeDamage();
 		}
 	}
 }
