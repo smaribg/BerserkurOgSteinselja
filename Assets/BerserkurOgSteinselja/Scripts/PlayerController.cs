@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+			if(animator == null){
+				Debug.Log("NULL BISS");
+			}
             animator.SetBool("RunningForward", false);
         }
         if (_aimVector.x != 0.0f || _aimVector.z != 0.0f)
