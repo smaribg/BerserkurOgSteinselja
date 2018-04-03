@@ -143,6 +143,11 @@
      <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
+     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <Compile Include="Assets\Tanks\_Completed-Assets\Scripts\Camera\CameraControl.cs" />
      <Compile Include="Assets\Tanks\_Completed-Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Tanks\_Completed-Assets\Scripts\Managers\TankManager.cs" />
@@ -311,6 +316,7 @@
      <None Include="Assets\Nice Material Pack\Shaders\Mineral.shader" />
      <None Include="Assets\Tanks\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
      <None Include="Assets\Tanks\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
+     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/Lenovo/Desktop/UnityTemp/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -410,6 +416,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Lenovo/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{38F93C5F-AD76-4F41-16C0-5918E05524A9}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

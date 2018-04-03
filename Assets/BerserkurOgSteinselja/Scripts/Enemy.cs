@@ -19,10 +19,12 @@ public class Enemy : MonoBehaviour
 	[HideInInspector]
     public float distanceFromTarget;
 	NavMeshAgent agent;
+	private Animator animator;
 
 	void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
 	}
 	void Update()
 	{
@@ -37,11 +39,12 @@ public class Enemy : MonoBehaviour
 			distanceFromTarget = Vector3.Distance(transform.position, target.position);
 			//transform.LookAt(steinselja);
 
-			if (distanceFromTarget <= MaxDist &&
-				distanceFromTarget >= MinDist)
+			if (distanceFromTarget <= MaxDist && distanceFromTarget >= MinDist)
 			{
 				agent.SetDestination(target.position);
-				// transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+				animator.SetBool("IsRunning",true);
+			}else{
+				animator.SetBool("IsRunning",false);
 			}
 		}
 	}

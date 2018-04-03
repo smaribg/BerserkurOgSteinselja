@@ -7,6 +7,7 @@ public class Arrow : MonoBehaviour {
 	private bool moving = true;
 	private Vector3 scale;
 	// Use this for initialization
+	public float force;
 	void Start () {
 		scale = transform.localScale;
 		_collider = GetComponent<CapsuleCollider>();
@@ -15,7 +16,7 @@ public class Arrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(moving){
-			transform.position = (transform.position + transform.up * 20 * Time.deltaTime);
+			transform.position = (transform.position + transform.up * force * Time.deltaTime);
 		}
 	}
 	void OnTriggerEnter(Collider other){
